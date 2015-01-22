@@ -22,5 +22,8 @@ class Instructor < Person
 	end
 end
 
-student = Students.new("Chris")
+instructor = Instructor.new("Chris")
+
+student = Students.new("Christina")
+puts instructor.to_s
 puts student.to_s
