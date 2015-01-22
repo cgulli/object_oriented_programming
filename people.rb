@@ -27,3 +27,9 @@ instructor = Instructor.new("Chris")
 student = Students.new("Christina")
 puts instructor.to_s
 puts student.to_s
+
+puts instructor.teach
+puts student.learn
+
+puts student.teach
+#The scope of the teach method is only inside the Instructor class, therefore it doesn't exist outside of that class
