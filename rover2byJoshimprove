@@ -1,0 +1,84 @@
+class Rover
+	attr_accessor :x, :y, :direction
+
+	def initialize(x = 0, y = 0, direction = "N")
+		@x = x.to_i
+		@y = y.to_i
+		@direction = direction
+	end
+
+	def to_s
+		"#{@x}, #{@y}) #{@direction}"
+	end
+
+    def read_instructions
+    	puts "Input instructions"
+
+    	instructions = gets.chomp
+    	instructions.split("").each do |x|
+    		if x == "M"
+    			move
+    		elsif x == 'L' || x == 'R'
+    			turn(x)
+    		elsif x == "Q" || "q"
+    			exit
+    		end
+    		robot_position
+    	end
+    	read_instructions
+    end
+
+	def turn(t)
+		if t == "L"
+			if @direction == "N"
+				@direction = "W"
+			elsif @direction == "W"
+				@direction = "S"
+			elsif @direction == "E"
+				@direction = "N"
+			elsif @direction == "S"
+				@direction = "E"
+			else
+				raise "Bad direction"
+			end
+		elsif t == "R"
+			if @direction == "N"
+				@direction = "E"
+			elsif @direction == "W"
+				@direction = "N"
+			elsif @direction == "E"
+				@direction = "S"
+			elsif @direction == "S"
+				@direction = "W"
+			else
+				raise "Bad direction"
+
+			end
+		end
+	end 
+
+	def move
+		if @direction == "N"
+			@y += 1
+		elsif @direction == "W"
+			@x -= 1
+		elsif @direction == "E"
+			@x += 1
+		elsif @direction == "S"
+			@y -= 1
+		end
+	end
+
+	def robot_position
+		puts "Rover is at (#{@x}, #{@y}) #{@direction} "
+	end
+end
+
+
+puts "Input location in the desired format 'XYD'"
+
+initial_settings = gets.chomp.split("")
+
+crawler = Rover.new(*initial_settings)
+
+crawler.read_instructions
