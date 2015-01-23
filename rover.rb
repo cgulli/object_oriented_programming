@@ -69,17 +69,18 @@ class Rover
 		end
 	end
 	def robot_position
-		puts "I am at (#{@x}, #{@y}) #{@direction}...on mars!!" 
+		puts "I am at (#{@x}, #{@y}) facing #{@direction}...on mars!!" 
 	end
 end
 
 crawler =Rover.new
+argo =Rover.new
 
-puts "Input location in the desired format 'XYD'"
+puts "Input location of CRAWLER in the desired format of 'XYD'"
 
 crawler_location = gets.chomp
 
-puts "Input instructions"
+puts "Input instructions for CRAWLER"
 
 crawler_commands = gets.chomp
 
@@ -88,3 +89,15 @@ crawler.read_instructions(crawler_commands)
 
 puts crawler.robot_position
 
+puts "Input location of ARGO in the desired format of 'XYD'"
+
+argo_location = gets.chomp
+
+puts "Input instructions for ARGO"
+
+argo_commands = gets.chomp
+
+argo.set_launch_position(argo_location)
+argo.read_instructions(argo_commands)
+
+puts argo.robot_position
