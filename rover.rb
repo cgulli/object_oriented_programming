@@ -76,6 +76,10 @@ end
 crawler =Rover.new
 argo =Rover.new
 
+puts "Input plateau size in the desired format of XY"
+
+plateau = gets.chomp
+
 puts "Input location of CRAWLER in the desired format of 'XYD'"
 
 crawler_location = gets.chomp
